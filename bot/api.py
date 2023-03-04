@@ -1,12 +1,18 @@
 import requests
 
-url = "http://localhost:3000/"
+url = "ec2-18-222-108-213.us-east-2.compute.amazonaws.com/:3000"
 
 async def getMoney(username, server):
     id = server + username
-    money = await requests.get(url + "/" + id)
-    return money
+    money = 0
+    try:
+        with requests.session() as session:
+            money = session.get(url + "/" + str(id))
+            print(money.json())
+        return money.json()['money']
+    except:
+        return 100 # starting balance
 
 async def updateMoney(username, server, money):
     id = server + username
-    await requests.post(url + "/" + id + "/" + money)
+    requests.post(url + "/" + str(id) + "/" + str(money))

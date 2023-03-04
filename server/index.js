@@ -24,7 +24,7 @@ app.get('/get/:username', async (req, res) => {
     Key: username
   })
   const response = await ddbDocClient.send(cmd);
-  res.send(response.money)
+  res.json({'money': response.money})
 })
 
 app.post('/update/:username/:value', async (req, res) => {

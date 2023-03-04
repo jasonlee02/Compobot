@@ -72,7 +72,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    userMoney = await getMoney(message.author, message.guild)
+    userMoney = await getMoney(message.author.id, message.guild.id)
   
     if message.content.startswith('/help'):
        response = '''
@@ -93,9 +93,9 @@ async def on_message(message):
        await message.channel.send(response)
   
     if message.content.startswith('/beg'):
-       await updateMoney(message.author, message.guild, userMoney + 1) 
+       await updateMoney(message.author.id, message.guild.id, userMoney + 1) 
        response = '''
-       Some kind samaritan took pity on you. You now have {}.
+       Some kind samaritan took pity on you. You now have ${}.
        '''.format(userMoney + 1)
        await message.channel.send(response)
 
@@ -113,14 +113,14 @@ async def on_message(message):
            '''
            await message.channel.send(response)
        else:
-           await updateMoney(message.author, message.guild, userMoney - 10) 
+           await updateMoney(message.author.id, message.guild.id, userMoney - 10) 
            waste = getrandomNum('compost')
            response = '''
-           After enjoying a homecooked meal, your waste generated is {}.
+           After enjoying a homecooked meal, your waste generated is ${}.
            Is this compostable, or trash?
            '''.format(waste)
            await message.channel.send(response)
-           cache[message.author + message.guild] = waste
+           cache[message.author.id + message.guild.id] = waste
       
     elif message.content.startswith('/restaurant'):
        if userMoney < 15:
@@ -129,18 +129,18 @@ async def on_message(message):
            '''
            await message.channel.send(response)
        else:
-           await updateMoney(message.author, message.guild, userMoney - 15) 
+           await updateMoney(message.author.id, message.guild.id, userMoney - 15) 
            waste = getrandomNum('restaurant')
            response = '''
-           After treating yourself to a meal out, your generated waste is {}.
+           After treating yourself to a meal out, your generated waste is ${}.
            Is this compostable, or trash?
            '''.format(waste)
            await message.channel.send(response)
-           cache[message.author + message.guild] = waste
+           cache[message.author.id + message.guild.id] = waste
   
     elif message.content.startswith('/compost'):
-        waste = cache[message.author + message.guild]
-        del cache[message.author + message.guild]
+        waste = cache[message.author.id + message.guild.id]
+        del cache[message.author.id + message.guild.id]
         if waste in commonCompost or waste in rareCompost:
             balanceChange = 10 if waste in commonCompost else 25
             response = '''
@@ -154,8 +154,8 @@ async def on_message(message):
             '''.format(-balanceChange)
             await message.channel.send(response)
     elif message.content.startswith('/trash'):
-        waste = cache[message.author + message.guild]
-        del cache[message.author + message.guild]
+        waste = cache[message.author.id + message.guild.id]
+        del cache[message.author.id + message.guild.id]
         if waste in commonTrash or waste in rareTrash:
             balanceChange = 10 if waste in commonTrash else 25
             response = '''
