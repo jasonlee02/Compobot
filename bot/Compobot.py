@@ -170,4 +170,4 @@ async def on_message(message):
             await message.channel.send(response)
 
 
-client.run(os.getenv('MTA4MTM4MTM3MzUzNDc5Nzg3NA.GKEk_N.Xc4lD_WS40I9DnGwZlYJdgEnYBiAHE8ZJcLgF0')) #put in .env later
+client.run('MTA4MTM4MTM3MzUzNDc5Nzg3NA.GKEk_N.Xc4lD_WS40I9DnGwZlYJdgEnYBiAHE8ZJcLgF0') #put in .env later
