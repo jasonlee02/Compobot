@@ -1,1 +1,1 @@
-worker: python3 bot/Compobot.py
+worker: python3 Compobot.py
