@@ -1,6 +1,6 @@
 import requests
 
-url = "ec2-18-222-108-213.us-east-2.compute.amazonaws.com/:3000"
+url = "https://ec2-18-222-108-213.us-east-2.compute.amazonaws.com/:3000"
 
 async def getMoney(username, server):
     id = server + username
