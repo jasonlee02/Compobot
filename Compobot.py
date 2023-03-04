@@ -2,8 +2,6 @@ import discord
 import os
 import random
 import json
-from api import getMoney
-from api import updateMoney
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -282,4 +280,4 @@ async def on_message(message):
         json.dump(database, write_file, indent = 4)
 
 
-client.run(os.getenv('DISCORD_TOKEN')) #put in .env later
+client.run(os.environ.get('DISCORD_TOKEN')) #put in .env later
