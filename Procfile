@@ -1,1 +1,1 @@
-web: python3 compobot.py
+worker: python3 bot/Compobot.py
