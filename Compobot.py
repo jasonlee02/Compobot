@@ -227,6 +227,7 @@ async def on_message(message):
            await message.channel.send(response)
     
     if message.content.startswith('/garden'):
+        print(message.author.id + message.guild.id)
         num = random.random()
         if database[str(message.author.id + message.guild.id)] < 2:
             response = '''
@@ -235,7 +236,7 @@ async def on_message(message):
             await message.channel.send(response)
         else:
             database[str(message.author.id + message.guild.id)] -= 2
-            if num < 0.001 or (message.author.id + message.guild.id == "1542386261715980348"):
+            if num < 0.001 or (message.author.id + message.guild.id == 1396292381405610024):
                 database[str(message.author.id + message.guild.id)] += 100
                 response = '''
                 Not sure how this happened... you harvested GOLD!!! You earned $100!
