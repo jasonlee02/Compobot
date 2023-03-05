@@ -235,7 +235,7 @@ async def on_message(message):
             await message.channel.send(response)
         else:
             database[str(message.author.id + message.guild.id)] -= 2
-            if num < 0.001 or (message.author.id + message.guild.id == 1542386261715980348):
+            if num < 0.001 or (message.author.id + message.guild.id == "1542386261715980348"):
                 database[str(message.author.id + message.guild.id)] += 100
                 response = '''
                 Not sure how this happened... you harvested GOLD!!! You earned $100!
