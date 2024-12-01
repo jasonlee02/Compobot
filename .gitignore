@@ -161,3 +161,5 @@ cython_debug/
 Hack.pem
 node_modules
 /server
+
+data.json
