@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import os
-import random
+import sys
 from dotenv import load_dotenv
 from database import JsonDB
 import compost_game
@@ -123,5 +123,10 @@ async def trash(ctx):
     database.set(user_id, new_money)
     await ctx.send(response)
 
-
-bot.run(os.environ.get('DISCORD_TOKEN')) #put in .env later
+while True:
+    try:
+        bot.run(os.environ.get('DISCORD_TOKEN')) #put in .env later
+    except RuntimeError:
+        sys.exit(0)
+    except:
+        pass
