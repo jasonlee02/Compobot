@@ -163,3 +163,4 @@ node_modules
 /server
 
 data.json
+nohup.out
